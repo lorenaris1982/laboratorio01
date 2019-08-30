@@ -10,6 +10,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "utn.h"
+
 
 int calculaMaximoMinimoPromedio(int *maximo, int *minimo, float *promedio, int cantidad);
 
@@ -19,8 +21,14 @@ int main(void) {
 	float promedio;
 	int cantidad;
 
-	printf("Ingrese la cantidad de casos ");
-	scanf("%d", &cantidad);
+	/*printf("Ingrese la cantidad de casos ");
+	scanf("%d", &cantidad);*/
+	if (getInt(&cantidad,"Ingrese la cantidad de casos\n ", "Error",0,100,2)==-1)
+	{
+		printf("La cantidad es incorrecta");
+		return EXIT_FAILURE;
+	}
+
 
 	if(calculaMaximoMinimoPromedio(&maximo, &minimo, &promedio, cantidad) == 0){
 		printf("El maximo es %d el minimo es %d el promedio es %f", maximo, minimo, promedio);
